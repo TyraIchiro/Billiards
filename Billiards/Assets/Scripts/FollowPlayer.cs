@@ -7,14 +7,14 @@ public class FollowPlayer : MonoBehaviour
     public Transform target;
     private Vector3 offset;
     private Vector3 ini;
-    private GameObject ballObj;
-    private Rigidbody ballRigid;
+    private GameObject BallObj;
+    private Rigidbody BallRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        ballObj = GameObject.Find("Ball_00");
-        ballRigid = ballObj.GetComponent<Rigidbody>();
+        BallObj = GameObject.Find("Ball_00");
+        BallRb = BallObj.GetComponent<Rigidbody>();
         ini = target.position;
         offset = GetComponent<Transform>().position - ini;
     }
@@ -32,11 +32,11 @@ public class FollowPlayer : MonoBehaviour
         }
         */
         //座標変化が微量の時、止める
-        if (ballRigid.velocity.magnitude < 0.1f)
+        if (BallRb.velocity.magnitude < 0.1f)
         {
             //Debug.Log("stop");
-            ballRigid.velocity = Vector3.zero;
-            ballRigid.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+            BallRb.velocity = Vector3.zero;
+            BallRb.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
             GetComponent<Transform>().position = target.position + offset;
         }
     }
