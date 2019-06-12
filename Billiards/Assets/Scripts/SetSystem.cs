@@ -5,10 +5,12 @@ using UnityEngine;
 public class SetSystem : MonoBehaviour
 {
     private Rigidbody rb;
+    private Vector3 tmp;
+    public GameObject stick;
 
     public void SetQue()
     {
-        GameObject.Find("Stick").transform.localPosition = new Vector3(0, -0.3f, 1.2f);
+        stick.transform.localPosition = new Vector3(tmp.x, tmp.y, tmp.z);
         rb.isKinematic = true;
         rb.detectCollisions = false;
     }
@@ -16,7 +18,8 @@ public class SetSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GameObject.Find("Stick").GetComponent<Rigidbody>();
+        rb = stick.GetComponent<Rigidbody>();
+        tmp = stick.transform.localPosition;
     }
 
     // Update is called once per frame

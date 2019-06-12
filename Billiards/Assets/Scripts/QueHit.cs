@@ -5,10 +5,12 @@ using UnityEngine;
 public class QueHit : MonoBehaviour
 {
     private Rigidbody rb;
+    private Vector3 tmp;
 
     // Start is called before the first frame update
     void Start()
     {
+        tmp = this.transform.localPosition;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -20,7 +22,7 @@ public class QueHit : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        transform.localPosition = new Vector3(0, -0.3f, 1.2f);
+        this.transform.localPosition = new Vector3(tmp.x, tmp.y, tmp.z);
         rb.isKinematic = true;
         rb.detectCollisions = false;
     }

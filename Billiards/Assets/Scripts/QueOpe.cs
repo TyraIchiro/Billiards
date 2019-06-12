@@ -24,12 +24,12 @@ public class QueOpe : MonoBehaviour
     void Update()
     {
         scroll = Input.GetAxis("Mouse ScrollWheel");
-        Vector3 posA_1 = this.gameObject.transform.position;
-        Vector3 posA_2 = objA.gameObject.transform.position;
+        Vector3 posA_1 = this.transform.position;
+        Vector3 posA_2 = objA.transform.position;
         float dis2 = Vector3.Distance(posA_1, posA_2);
         // Debug.Log("Distance : " + dis2);
 
-        this.gameObject.transform.localPosition += -transform.forward * scroll * speed;
+        this.transform.position += transform.forward * scroll * speed;
         if (Input.GetMouseButtonDown(0))
         {
             if ( dis2 >= dis1 && dis2 < 1.5f )
@@ -48,7 +48,7 @@ public class QueOpe : MonoBehaviour
             {
                 forceMagnitude = 0;
             }
-            AddForce(this.gameObject.transform.forward);
+            AddForce(GameObject.Find("Stick").transform.forward);
         }
     }
 
